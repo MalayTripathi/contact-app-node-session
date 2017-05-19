@@ -1,22 +1,18 @@
 <html>
+	<head>
+		<link rel = "stylesheet" type ="text/css" href = "/stylesheets/style.css">
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script type = "text/javascript" src = "/javascripts/frontend.js"></script>
+	</head>
 
-<head>
-    <link rel = "stylesheet" type ="text/css" href = "/stylesheets/style.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type = "text/javascript" src = "/javascripts/frontend.js"></script>
-</head>
-
-<body>
-
-<h1>{{pageTitle}}</h1>
-<p>{{copyright}}</p>
-<form onsubmit="submitData()">
-    <h3>Name:</h3><input type="text" id="name" required>
-    <h3>Email:</h3><input type="email" id="email" required>
-    <h3>Phone:</h3><input type="number" id="phone" required><br>
-    <button type="submit" name="submit" id="submit-button">Submit</button>
-</form>
-
-</body>
-
+	<body>
+		<h1>{{pageTitle}}</h1>
+		<p>{{copyright}}</p>
+		<form>
+			<h3>Name:</h3><input type="text" id="name">
+			<h3>Email:</h3><input type="text" id="email">
+			<h3>Phone:</h3><input type="text" id="phone"><br>
+		</form>
+		<button value="submit" id="submit-button" onclick="submitData()">Submit</button>
+	</body>
 </html>
