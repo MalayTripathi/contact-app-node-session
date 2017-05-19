@@ -10,11 +10,11 @@
 
 <h1>{{pageTitle}}</h1>
 <p>{{copyright}}</p>
-<form>
+<form onsubmit="submitData()">
     <h3>Name:</h3><input type="text" id="name" required>
     <h3>Email:</h3><input type="email" id="email" required>
     <h3>Phone:</h3><input type="number" id="phone" required><br>
-    <button type="submit" name="submit" id="submit-button" onclick="submitData()">Submit</button>
+    <button type="submit" name="submit" id="submit-button">Submit</button>
 </form>
 
 </body>

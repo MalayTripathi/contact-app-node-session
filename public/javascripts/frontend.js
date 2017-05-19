@@ -2,7 +2,7 @@ function submitData(){
     var name = document.getElementById("name");
     var email = document.getElementById("email");
     var phone = document.getElementById("phone");
-    axios.post('/api/submit', {
+    axios.post('/api/addcontact', {
         name: name.value,
         email: email.value,
         phone: phone.value
