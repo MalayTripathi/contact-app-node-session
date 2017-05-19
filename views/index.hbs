@@ -8,11 +8,17 @@
 	<body>
 		<h1>{{pageTitle}}</h1>
 		<p>{{copyright}}</p>
-		<form>
-			<h3>Name:</h3><input type="text" id="name">
-			<h3>Email:</h3><input type="text" id="email">
-			<h3>Phone:</h3><input type="text" id="phone"><br>
+		<form onsubmit="submitData()">
+			<h3>Name:</h3><input type="text" id="name" required>
+			<h3>Email:</h3><input type="email" id="email" required>
+			<h3>Phone:</h3><input type="number" id="phone" required><br>
+			<input type="submit" class="subutton" id="submit-button" value="Submit">
 		</form>
-		<button value="submit" id="submit-button" onclick="submitData()">Submit</button>
 	</body>
 </html>
+
+<!-- Button tag does not work in the Form element. One option is to use a button outside form and call required
+JS function onclick. But this will bypass the required and type attribute of input tags that we have applied to
+various fields. Hence inside form we can use input field with type submit instead of a submit button. And 
+call the JS function onformsubmit using onsubmit attribute. This will submit the form when submit button is 
+clicked and before that all field will be verified for type and required fields also.-->

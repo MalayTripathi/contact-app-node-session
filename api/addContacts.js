@@ -1,20 +1,22 @@
-var Contacts = require('../mongoconnect');
+//Requiring the contents of the modules exported from mongoconnect.js into a variable called DB
+var DB = require('../mongoconnect');
 
 saveDataToDB = (req, res, next) => {
-   conData = {
-      name: req.body.name,
-      email: req.body.email,
-      phone: req.body.phone
-	}
-
-	Contacts.findOne({ email: conData.email })
-		.then((response) => {
+	//Collecting the response into a new JSON object conData. The properties here should be of the same name
+	//as the properties names we used while defining the schema into mongoconnect.js else the value where the 
+	//proprty mismatches will not be pushed into the DB.
+	var conData = {
+		name: req.body.name,
+		email: req.body.email,
+		number: req.body.phone
+	};
+	//Here we refer to the Schema by calling the DB.ConCollect exported by mongoconnect.js
+	DB.ConCollect.findOne({ email: conData.email })
+		.then((response)=> {
 			if (!response) {
-				console.log('I Am in the API');
-				var contact = new Contacts(conData);
+				var contact = new DB.ConCollect(conData);
 				contact.save()
 					.then(function (response) {
-						console.log(response);
 					res.send({'Status': "Value Added Successfully"})
 					})
 					.catch(function (err) {

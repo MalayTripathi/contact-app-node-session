@@ -1,13 +1,14 @@
-function submitData(){
+var obj = {};
+function submitData() {
     var name = document.getElementById("name");
     var email = document.getElementById("email");
-    var phone = document.getElementById("phone");
-    axios.post('/api/addcontact', {
+	 var phone = document.getElementById("phone");
+	 axios.post('/api/addcontact',{
         name: name.value,
         email: email.value,
         phone: phone.value
-    }).
-    then((res) => {
+    })
+    .then((res) => {
         console.log(res.status);
     });
 }
