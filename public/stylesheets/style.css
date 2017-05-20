@@ -17,3 +17,14 @@ input{
   font-size: 16px;
   border: 2px solid gray;
 }
+
+table{
+	margin-top: 60px;
+	border: 2px solid black;
+}
+
+th, tr, td{
+	padding-left: 100px;
+	padding-right: 100px;
+	border: 2px solid black;
+}

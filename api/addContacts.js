@@ -16,8 +16,8 @@ saveDataToDB = (req, res, next) => {
 			if (!response) {
 				var contact = new DB.ConCollect(conData);
 				contact.save()
-					.then(function (response) {
-					res.send({'Status': "Value Added Successfully"})
+					.then(function (response){
+					res.send({'Status': "Success"})
 					})
 					.catch(function (err) {
 						res.send({ 'Status': 'Failure', Error: err });

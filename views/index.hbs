@@ -8,12 +8,23 @@
 	<body>
 		<h1>{{pageTitle}}</h1>
 		<p>{{copyright}}</p>
-		<form onsubmit="submitData()">
+		<form>
 			<h3>Name:</h3><input type="text" id="name" required>
 			<h3>Email:</h3><input type="email" id="email" required>
 			<h3>Phone:</h3><input type="number" id="phone" required><br>
-			<input type="submit" class="subutton" id="submit-button" value="Submit">
 		</form>
+		<button type="submit" class="subutton" onsubmit="submitData()">Submit</button>
+		<table id = "tabledata">
+			<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Phone</th>
+					</tr>
+			</thead>
+			<tbody id="fetchdata">
+			</tbody>
+		</table>
 	</body>
 </html>
 
