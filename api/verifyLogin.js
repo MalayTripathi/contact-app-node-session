@@ -1,5 +1,7 @@
 var DB = require('../mongoconnect');
 
+var currentUser = {};
+
 var verifyLogin = (req, res, next) => {
 	var loginData = {
 		username: req.body.username,
@@ -20,6 +22,7 @@ var verifyLogin = (req, res, next) => {
 			else if (response.username == loginData.username && response.password == loginData.password)
 			{	
 				res.send({ status: "Login Successfull" });
+				currentUser.userName = response.username;
 			}
 			else
 			{
@@ -32,5 +35,6 @@ var verifyLogin = (req, res, next) => {
 }
 
 module.exports = {
-	verifyLogin
+	verifyLogin,
+	currentUser
 };
