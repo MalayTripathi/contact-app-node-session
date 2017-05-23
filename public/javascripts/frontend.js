@@ -58,7 +58,33 @@ function editData(id) {
 		doc.contentEditable = true;
 	}	
 	var editbutton = document.getElementById("fetchdata").rows[id].cells[4];
-	editbutton.innerHTML = `<button type="submit" onclick=changeData()">Submit</button>`;
+	var email = document.getElementById("fetchdata").rows[id].cells[2].innerHTML;
+	editbutton.innerHTML = `<button type="submit" onclick="changeData('${id}', '${email}')">Submit</button>`;
+}
+
+function changeData(id, oldemail)
+{
+	var newname = document.getElementById("fetchdata").rows[id].cells[1].innerHTML;
+	var newemail = document.getElementById("fetchdata").rows[id].cells[2].innerHTML;
+	var newnumber = document.getElementById("fetchdata").rows[id].cells[3].innerHTML;
+	axios.post('/api/editcontact', {
+		name: newname,
+		email: newemail,
+		phone: newnumber,
+		oldemail: oldemail
+	})
+		.then((res) => {
+			if (res.data.Status == 'Success') {
+				displayContacts();
+			}
+			else {
+				console.log("Failed To Update Contact", res.data.Status);
+				displayContacts();
+			}
+		})
+		.catch(function (err) {
+			console.log("Error", err);
+		});
 }
 
 function deleteData(emailid)
