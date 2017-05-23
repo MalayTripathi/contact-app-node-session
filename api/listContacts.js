@@ -1,7 +1,9 @@
 var DB = require('../mongoconnect');
 
+var userlogin = require('./verifyLogin');
+
 getDataFromDB = (req, res, next) => {
-	DB.ConCollect.find().select()
+	DB.ConCollect.find({ admin: userlogin.currentUser.userName}).select()
 		.then(function (response) {
 			if (response)
 			{	
