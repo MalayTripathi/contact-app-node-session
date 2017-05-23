@@ -3,12 +3,22 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
-}
-
 input, button{
   padding: 5px;
+}
+
+.logindiv{
+	margin-top: 25px;
+	border: 2px solid black;
+	display: inline-block;
+	padding: 50px;
+}
+
+.logbutton{
+	margin-top: 20px;
+  padding: 5px;
+  font-size: 16px;
+  border: 2px solid gray;
 }
 
 .subutton{

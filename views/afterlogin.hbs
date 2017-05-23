@@ -1,0 +1,37 @@
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script type="text/javascript" src="/javascripts/frontend.js"></script>
+</head>
+
+<body>
+	<h1>{{pageTitle}}</h1>
+	<form>
+		<h3>Name:</h3><input type="text" id="name" required>
+		<h3>Email:</h3><input type="email" id="email" required>
+		<h3>Phone:</h3><input type="number" id="phone" required><br>
+	</form>
+	<button type="submit" class="subutton" onclick="submitData()">Submit</button>
+	<table id="tabledata">
+		<thead>
+			<tr>
+				<th>S.No.</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Edit Contact</th>
+				<th>Delete Contact</th>
+			</tr>
+		</thead>
+		<tbody id="fetchdata">
+		</tbody>
+	</table>
+</body>
+
+</html>
+
+<!-- Button tag does not work in the Form element. Working option is to use a button outside form and call required
+JS function onclick. We can't use input field with type submit instead of a submit button as this was leading 
+to refreshing the homepage after API's were executed. This was clearing the data displayed -->
