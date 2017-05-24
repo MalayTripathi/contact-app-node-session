@@ -4,6 +4,7 @@ var logger = require('morgan');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var view = require('./routes/view');
 var api = require('./routes/api');
@@ -23,6 +24,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', view);
 app.use('/api', api);
+
+app.use(session({
+	secret: 'Secret@123',
+	resave: true,
+	saveUninitialized: true
+}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

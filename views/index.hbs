@@ -8,11 +8,21 @@
 	<body>
 		<h1>{{pageTitle}}</h1>
 		<p>{{copyright}}</p>
+		<div class = "outer-div">
 		<div class = "logindiv">
+			<h1>Sign In</h1>
 			<h3>Registered Email:</h3><input type="email" id="regemail" required>
 			<h3>Password:</h3><input type="password" id="password" required>
 			<br>
 			<button type="submit" class="logbutton" onclick="loginAdmin()">Login</button>
+		</div>
+		<div class = "signupdiv">
+			<h1>Sign Up</h1>
+			<h3>Email:</h3><input type="email" id="suemail" required>
+			<h3>Password:</h3><input type="password" id="supassword" required>
+			<br>
+			<button type="submit" class="logbutton" onclick="userSignUp()">Sign Up</button>
+		</div>
 		</div>
 	</body>
 </html>
