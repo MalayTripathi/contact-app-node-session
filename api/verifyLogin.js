@@ -1,40 +1,31 @@
 var DB = require('../mongoconnect');
 
-var currentUser = {};
-
 var verifyLogin = (req, res, next) => {
 	var loginData = {
 		username: req.body.username,
 		password: req.body.password
 	}
-	DB.LogCollect.findOne({ username: loginData.username })	
+	DB.LogCollect.findOne({ username: loginData.username })
 		.then((response) => {
 			if (!response) {
-				var logDetails = DB.LogCollect(loginData);
-				logDetails.save()
-					.then((response) => {
-						res.send({ status: "Login Created Successfully!" })
-					})
-					.catch(function (err) {
-						res.send({ status: "Could Not Create A Login For New User!" });
-					})
+				res.json({ success: false, status: 'Authentication Failed!' });
 			}
-			else if (response.username == loginData.username && response.password == loginData.password)
-			{	
-				res.send({ status: "Login Successfull" });
-				currentUser.userName = response.username;
+			else {
+				if (response.password != loginData.password) {
+					res.json({ success: false, status: 'Wrong Password Entered. Authentication Failed!' });
+				}
+				else {
+					req.session = loginData;
+					req.session.isLogged = true;
+					res.json({ success: true, status: 'Login Successfull', isLogged: req.session.isLogged })
+				}
 			}
-			else
-			{
-				res.send({ status: "Incorrect Login Credentials" });
-			}	
 		})
-		.catch(function (err) {
-			res.send({ status: err });
+		.catch((err) => {
+			res.json({ success: false, status: 'Unexpected Error Occured' });
 		});
-}
+}	
 
 module.exports = {
 	verifyLogin,
-	currentUser
 };

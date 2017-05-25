@@ -10,7 +10,7 @@ h1,p{
 	text-align: center !important;
 }
 
-input, button{
+input{
   padding: 5px;
 }
 
@@ -29,9 +29,9 @@ input, button{
 
 .logbutton, .subutton{
 	margin-top: 20px;
-  padding: 5px;
-  font-size: 16px;
-  border: 2px solid gray;
+  	padding: 5px;
+  	font-size: 16px;
+  	border: 2px solid gray;
 }
 
 table{

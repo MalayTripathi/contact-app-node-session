@@ -1,25 +1,30 @@
 function submitData() {
-    var name = document.getElementById("name");
-    var email = document.getElementById("email");
-	 var phone = document.getElementById("phone");
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+	 var phone = document.getElementById("phone").value;
 	
-	 axios.post('/api/addcontact', {
-		 name: name.value,
-		 email: email.value,
-		 phone: phone.value
-	 })
-	.then((res) => {
-		if (res.data.Status == 'Success') {
-			displayContacts();
-		}
-		else {
-			console.log("Failed To Add Contact");
-			displayContacts();
-		}
-	})
-	.catch(function (err) {
-		console.log("Error", err);
-	});
+	 if (name && email && phone) {
+		 axios.post('/api/addcontact', {
+			 name: name,
+			 email: email,
+			 phone: phone
+		 })
+			 .then((res) => {
+				 if (res.data.success) {
+					 displayContacts();
+				 }
+				 else {
+					 alert(response.data.status)
+					 displayContacts();
+				 }
+			 })
+			 .catch(function (err) {
+				 console.log("Error", err);
+			 });
+	 }
+	 else {
+		 alert('Required Fields Cannot Be Null.'); 
+	}
 }
 
 function displayContacts() {
