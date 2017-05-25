@@ -1,6 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
+var auth = (req, res, next) => {
+	if (req.session.isLogged && req.session) {
+		return next();
+	}
+	else
+		return res.json({ success: false, status: 'Failed! Please login' });
+};
+
 var loginVerify = require('../api/verifyLogin');
 var addContact = require('../api/addContacts');
 var listContact = require('../api/listContacts');

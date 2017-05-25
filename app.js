@@ -26,7 +26,7 @@ app.use('/', view);
 app.use('/api', api);
 
 app.use(session({
-	secret: 'Secret@123',
+	secret: 'secret@123',
 	resave: true,
 	saveUninitialized: true
 }));

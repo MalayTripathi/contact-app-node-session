@@ -17,5 +17,18 @@
     "mongoose": "^4.10.0",
     "morgan": "~1.8.1",
     "serve-favicon": "~2.4.2"
-  }
+  },
+  "description": "Contact App With Login Session",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MalayTripathi/ContactAppWithLogin.git"
+  },
+  "author": "Malay Tripathi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MalayTripathi/ContactAppWithLogin/issues"
+  },
+  "homepage": "https://github.com/MalayTripathi/ContactAppWithLogin#readme"
 }
