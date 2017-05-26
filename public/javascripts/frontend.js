@@ -1,3 +1,8 @@
+window.onload = () =>
+{
+	displayContacts();
+}	
+
 function submitData() {
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
@@ -108,5 +113,22 @@ function deleteData(emailid)
 		{
 			displayContacts();
 		}	
+	})
+}
+
+function Logout() {
+	axios.post('/api/logout')
+		.then((response) => {
+			if (response.data.success)
+			{
+				alert(response.data.status);
+				location.replace('/');	
+			}
+			else {
+				alert('Could Not Logout User');
+			}
+		})
+		.catch((err) => {
+			alert('Unknown Error Occoured');
 	})
 }

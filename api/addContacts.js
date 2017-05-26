@@ -5,7 +5,6 @@ saveDataToDB = (req, res, next) => {
 	//Collecting the response into a new JSON object conData. The properties here should be of the same name
 	//as the properties names we used while defining the schema into mongoconnect.js else the value where the 
 	//proprty mismatches will not be pushed into the DB.
-	console.log(req.session);
 	var conData = {
 		admin: req.session.username,
 		name: req.body.name,
