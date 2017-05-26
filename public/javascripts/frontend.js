@@ -32,27 +32,33 @@ function displayContacts() {
 	tab.innerHTML = "";
 	axios.post('/api/listcontact')
 		.then(function (response) {
-			var result = response.data.result;
-			for (var i = 0; i < result.length; i++) {
-				var tableid = document.getElementById("fetchdata");
-				var rowid = tableid.insertRow(i);
-				var sno = rowid.insertCell(0)
-				var namecol = rowid.insertCell(1);
-				var mailcol = rowid.insertCell(2);
-				var phonecol = rowid.insertCell(3);
-				var editbut = rowid.insertCell(4);
-				var delbut = rowid.insertCell(5);
-				sno.innerHTML = i+1;
-				namecol.innerHTML = result[i].name;
-				mailcol.innerHTML = result[i].email;
-				phonecol.innerHTML = result[i].number;
-				//Use Single Quotes to Send email ID as it will error Uncaught Syntax Error. DoubleQuotes will not work
-				editbut.innerHTML = `<button type="submit" onclick="editData('${i}')">Edit Contact</button>`;
-				delbut.innerHTML = `<button type="submit" onclick="deleteData('${result[i].email}')">Delete Contact</button>`;
+			if (response.data.success) {
+				var result = response.data.result;
+				for (var i = 0; i < result.length; i++) {
+					var tableid = document.getElementById("fetchdata");
+					var rowid = tableid.insertRow(i);
+					var sno = rowid.insertCell(0)
+					var namecol = rowid.insertCell(1);
+					var mailcol = rowid.insertCell(2);
+					var phonecol = rowid.insertCell(3);
+					var editbut = rowid.insertCell(4);
+					var delbut = rowid.insertCell(5);
+					sno.innerHTML = i + 1;
+					namecol.innerHTML = result[i].name;
+					mailcol.innerHTML = result[i].email;
+					phonecol.innerHTML = result[i].number;
+					//Use Single Quotes to Send email ID as it will error Uncaught Syntax Error. DoubleQuotes will not work
+					editbut.innerHTML = `<button type="submit" onclick="editData('${i}')">Edit Contact</button>`;
+					delbut.innerHTML = `<button type="submit" onclick="deleteData('${result[i].email}')">Delete Contact</button>`;
+				}
 			}
+			else
+			{
+				alert(response.data.status);
+			}	
 		})
 		.catch(function (err) {
-			console.log("Error", err);
+			alert('Unable To Retrieve Contact Information');
 		})
 }
 

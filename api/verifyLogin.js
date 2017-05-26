@@ -15,9 +15,7 @@ var verifyLogin = (req, res, next) => {
 					res.json({ success: false, status: 'Wrong Password Entered. Authentication Failed!' });
 				}
 				else {
-					console.log(req);
-					req.session = loginData;
-					console.log(req);
+					req.session.username = loginData.username;
 					req.session.isLogged = true;
 					res.json({ success: true, status: 'Login Successfull', isLogged: req.session.isLogged })
 				}

@@ -1,17 +1,15 @@
 var DB = require('../mongoconnect');
 
-var userlogin = require('./verifyLogin');
-
 getDataFromDB = (req, res, next) => {
-	DB.ConCollect.find({ admin: userlogin.currentUser.userName}).select()
+	DB.ConCollect.find({ admin: req.session.username}).select()
 		.then(function (response) {
 			if (response)
 			{	
-				res.json({ status: "Success", result: response });
+				res.json({success: true, status: "Success", result: response });
 			}
 		})
 		.catch(function (err){
-			console.log(err);
+			res.json({ success: false, status: "Unexpected Error", result: err });
 		})
 }
 
